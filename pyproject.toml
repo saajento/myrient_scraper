@@ -1,0 +1,21 @@
+[project]
+name = "myrient_scraper"
+version = "0.0.1"
+authors = [
+  { name="Saajento", email="saajento@gmail.com" },
+]
+description = "Scrape Myriet for goodies"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/saajento/myrient_scraper"
+Issues = "https://github.com/saajento/myrient_scraper/issues"
+
+[project.scripts]
+myr-scrape = "myrient_scraper:cli"
