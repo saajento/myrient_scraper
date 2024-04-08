@@ -1,4 +1,6 @@
 from myrient_scraper.myrient import Myrient
+
+
 url1='https://myrient.erista.me/files/No-Intro/SNK%20-%20NeoGeo%20Pocket/'
 url2='https://myrient.erista.me/files/'
 my = Myrient(url1)
