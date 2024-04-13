@@ -30,6 +30,9 @@ def parse_title(title):
         elif c == ')' and tag_l > 0:
             tag_r = i
         elif c == ".":
+            # disregard if in open parens
+            if tag_l > 0 and tag_r < 0:
+                continue
             e_i = i
     if name_r < 0:
         name_r = e_i if e_i > 0 else len(title)
@@ -72,7 +75,9 @@ class MyrientParser(HTMLParser):
             if 'title' in vals:
                 self.list_started = True
                 tparse = parse_title(vals['title'])
-                tparse["link"] = vals['href']
+                tparse['link'] = vals['href']
+                if tparse['link'][-1] == '/':
+                    tparse['extension'] = ''
                 self.entries.append(tparse)
         elif tag == "td":
             if self.list_started and 'class' in vals and vals['class'] == 'size':

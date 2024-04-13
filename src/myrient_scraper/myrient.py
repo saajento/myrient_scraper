@@ -1,6 +1,25 @@
+from typing import Any
 from myrient_scraper.htmlparser import MyrientParser
+from myrient_scraper.cache import Cache
 
 class Myrient:
+
+    def __init__(self):
+        #def get_cache
+        self.cache = Cache()
+
+    def get_url(self, name: str) -> Any:
+        return self.cache.get_url(name)
+        # _split = [p + '/' for p in name.split('/') if p]
+        # # if its a file, chop off the /
+        # if name[-1] != '/':
+        #     _split[-1] = _split[:-1]
+        # val = self.cache(name)
+        # for fragment, i in enumerate(_split):
+        #     val['fragment']
+
+
+class Myrient2:
     base_url = 'https://myrient.erista.me/files/'
     contents = {}
 
@@ -11,6 +30,7 @@ class Myrient:
         path = url[len(self.base_url):]
         print(path)
         p_split = (path.split('/') + ['']*3)[:3]
+        # THIS ONLY WORKS FOR SOME ROM STUFF, NEED TO BE MORE GENERAL
         self.contents = {
             group: {
                 system: {
