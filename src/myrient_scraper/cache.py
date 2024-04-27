@@ -12,14 +12,6 @@ SITE_CACHE_DIR = 'myrient-cache/'
 base_url = 'https://myrient.erista.me/files/'
 
 
-class Constraint:
-    def __init__(self):
-        pass
-
-    def add_condition(self, condition):
-        pass
-
-
 class Cache:
     base_url = base_url
     CACHE_FILE = 'cache.json'
@@ -33,10 +25,12 @@ class Cache:
         else:
             raise Exception("No cache found")
 
-    def query(self, path, constraints):
-        results = self.get_url(path)
-        return self.constrain(results, constraints)
-
+    def query(self, path, constraints=[]):
+        raw_q = self.get_url(path)
+        results = {}
+        for c in constraints:
+            pass
+        return results
 
     def get_url(self, path):
         val = self._cache
